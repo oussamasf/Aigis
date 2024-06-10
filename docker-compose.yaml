@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  mongo:
+    container_name: AigisDb
+    image: mongo:latest
+    volumes:
+      - ${MONGO_DATA}:/data/db
+      - ${MONGO_DUMP}:/dump
+
+    ports:
+      - 27021:27017
