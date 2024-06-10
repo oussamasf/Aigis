@@ -6,6 +6,13 @@ services:
     volumes:
       - ${MONGO_DATA}:/data/db
       - ${MONGO_DUMP}:/dump
-
     ports:
       - 27021:27017
+
+  redis:
+    container_name: AegisRedis
+    image: redis:latest
+    ports:
+      - 6378:6379
+    volumes:
+      - ${REDIS_DATA}:/data

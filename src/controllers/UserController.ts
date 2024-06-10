@@ -23,6 +23,22 @@ class UserController {
       res.status(400).json({ message: (err as Error).message });
     }
   }
+
+  async findUser(req: Request, res: Response): Promise<void> {
+    try {
+      const user = await this.userService.findOneUser({
+        email: req.params.email,
+      });
+      if (user) {
+        res.status(200).json(user);
+      } else {
+        res.status(404).json({ message: "User not found" });
+      }
+    } catch (err) {
+      console.log((err as Error).stack);
+      res.status(500).json({ message: (err as Error).message });
+    }
+  }
 }
 
 export const userController = new UserController(userService);

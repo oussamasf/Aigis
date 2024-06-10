@@ -36,6 +36,10 @@ class User implements IUserModel {
     const user = new this.model(data);
     return user.save();
   }
+
+  async findOne(query: object): Promise<IUser | null> {
+    return this.model.findOne(query).exec();
+  }
 }
 
 export const UserIns = new User(UserModel);
